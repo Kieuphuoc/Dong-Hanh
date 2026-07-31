@@ -2,8 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { db, Post, Category, MediaItem } from '@/lib/supabase';
 import { Trash2, Edit3, Plus, ArrowLeft, Radio, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
+
+const BlockNoteEditor = dynamic(() => import('@/components/BlockNoteEditor'), {
+  ssr: false,
+});
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -363,7 +368,7 @@ export default function AdminDashboard() {
             {editingPostId ? 'Chỉnh Sửa Bài Viết' : 'Tạo Bài Viết Tin Tức Mới'}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-border pb-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-muted mb-1.5">
@@ -392,7 +397,9 @@ export default function AdminDashboard() {
                   className="w-full px-4 py-2 rounded-xl bg-muted-bg border border-border focus:outline-none focus:ring-2 focus:ring-primary text-sm text-foreground"
                 />
               </div>
+            </div>
 
+            <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-muted mb-1.5">
@@ -425,7 +432,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-              <div className="flex gap-6 items-center pt-2">
+              <div className="flex flex-wrap gap-6 items-center pt-4">
                 <label className="flex items-center gap-2 cursor-pointer text-sm font-semibold text-foreground">
                   <input
                     type="checkbox"
@@ -447,18 +454,17 @@ export default function AdminDashboard() {
                 </label>
               </div>
             </div>
+          </div>
 
-            {/* Content Editor */}
-            <div className="space-y-4 flex flex-col">
-              <label className="block text-xs font-bold uppercase tracking-wider text-muted">
-                Nội dung bài viết (Hỗ trợ HTML cơ bản) <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                required
-                placeholder="Nhập nội dung bài viết bằng định dạng HTML ví dụ <p>Đoạn văn</p> hoặc văn bản thường..."
-                value={postContent}
-                onChange={(e) => setPostContent(e.target.value)}
-                className="w-full flex-grow px-4 py-3 rounded-xl bg-muted-bg border border-border focus:outline-none focus:ring-2 focus:ring-primary text-sm text-foreground font-mono min-h-[220px]"
+          {/* Content Editor in a Notion-style Paper Sheet */}
+          <div className="space-y-4 pt-6">
+            <label className="block text-xs font-bold uppercase tracking-wider text-muted">
+              Nội dung bài viết <span className="text-red-500">*</span>
+            </label>
+            <div className="max-w-4xl mx-auto bg-white border border-border rounded-2xl shadow-md p-6 sm:p-10 min-h-[480px]">
+              <BlockNoteEditor
+                initialHTML={postContent}
+                onChange={(html) => setPostContent(html)}
               />
             </div>
           </div>

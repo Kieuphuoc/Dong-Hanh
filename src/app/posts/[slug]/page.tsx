@@ -113,7 +113,7 @@ export default function PostDetail({ params }: PostDetailProps) {
   }
 
   return (
-    <article className="space-y-8">
+    <article className="max-w-3xl mx-auto space-y-8">
       {/* Breadcrumb & Navigation Back */}
       <div className="flex items-center justify-between">
         <Link href="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-hover transition-colors">
@@ -126,66 +126,53 @@ export default function PostDetail({ params }: PostDetailProps) {
         )}
       </div>
 
-      {/* Hero Header */}
-      <div className="space-y-4">
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-foreground leading-tight">
-          {post.title}
-        </h1>
-        <p className="text-md sm:text-lg text-muted font-medium border-l-4 border-primary pl-4 leading-relaxed">
-          {post.summary}
-        </p>
-
-        {/* Post Metadata */}
-        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-border text-xs sm:text-sm text-muted font-medium">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <Calendar size={16} />
-              <span>{formatDate(post.created_at)}</span>
-            </div>
-            <span>•</span>
-            <div className="flex items-center gap-1.5">
-              <Eye size={16} />
-              <span>{post.views} lượt xem</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handleLike}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-300 ${
-                hasLiked
-                  ? 'bg-red-500 text-white border-red-500'
-                  : 'hover:bg-muted-bg text-foreground border-border'
-              }`}
-            >
-              <Heart size={16} className={hasLiked ? 'fill-white' : 'text-red-500'} />
-              <span>{post.likes}</span>
-            </button>
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Đã sao chép link bài viết vào bộ nhớ tạm!');
-              }}
-              className="p-2 rounded-full border border-border hover:bg-muted-bg text-foreground transition-colors"
-              title="Chia sẻ bài viết"
-            >
-              <Share2 size={16} />
-            </button>
-          </div>
+      {/* Notion Cover Image Banner */}
+      <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden border border-border bg-muted-bg shadow-sm group">
+        <img
+          src={post.cover_image}
+          alt=""
+          className="object-cover w-full h-full group-hover:scale-101 transition-transform duration-700"
+        />
+        {/* Overlapping Page Icon (Notion style) */}
+        <div className="absolute -bottom-6 left-8 w-16 h-16 bg-card-bg rounded-2xl border border-border shadow-md flex items-center justify-center text-3xl z-10">
+          {post.is_longform ? '📖' : '📰'}
         </div>
       </div>
 
-      {/* Main Cover Image */}
-      <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-lg border border-border bg-black">
-        <img
-          src={post.cover_image}
-          alt={post.title}
-          className="object-cover w-full h-full"
-        />
+      {/* Notion Page Header */}
+      <div className="pt-4 space-y-4">
+        <h1 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight leading-tight">
+          {post.title}
+        </h1>
+        
+        {/* Metadata in subtle Notion style */}
+        <div className="flex flex-wrap items-center gap-4 text-xs text-muted font-semibold pt-1">
+          <div className="flex items-center gap-1">
+            <Calendar size={14} />
+            <span>{formatDate(post.created_at)}</span>
+          </div>
+          <span>•</span>
+          <div>
+            <span>{post.views} lượt xem</span>
+          </div>
+          <span>•</span>
+          <button
+            onClick={handleLike}
+            className={`flex items-center gap-1 hover:text-red-500 transition-colors ${hasLiked ? 'text-red-500' : ''}`}
+          >
+            <Heart size={14} className={hasLiked ? 'fill-red-400' : ''} />
+            <span>{post.likes} lượt thích</span>
+          </button>
+        </div>
+
+        {/* Notion Callout Summary */}
+        <div className="p-5 rounded-2xl bg-muted-bg/50 border-l-4 border-primary text-foreground/90 font-medium text-sm sm:text-base leading-relaxed">
+          {post.summary}
+        </div>
       </div>
 
-      {/* Rich text Content */}
-      <div className="prose prose-slate dark:prose-invert max-w-none text-foreground leading-relaxed text-base sm:text-lg space-y-6">
+      {/* Notion-style Rich Text Content */}
+      <div className="prose prose-slate dark:prose-invert max-w-none text-foreground leading-7 text-base sm:text-lg space-y-6 pt-4">
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
 
@@ -193,10 +180,10 @@ export default function PostDetail({ params }: PostDetailProps) {
       <div className="p-6 rounded-2xl bg-muted-bg border border-border flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold">
-            ĐH
+            AR
           </div>
           <div>
-            <h4 className="text-sm font-bold text-foreground">Ban biên tập DongHanh.vn</h4>
+            <h4 className="text-sm font-bold text-foreground">Ban biên tập Arito.vn</h4>
             <p className="text-xs text-muted">Bản tin thông tin nội bộ của các thành viên</p>
           </div>
         </div>

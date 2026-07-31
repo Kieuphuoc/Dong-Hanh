@@ -9,14 +9,14 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-md shadow-sm">
-                ĐH
+                AR
               </span>
               <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                DongHanh.vn
+                Arito.vn
               </span>
             </div>
             <p className="text-sm text-muted">
-              Trang tin nội bộ chính thức của Tập đoàn Đồng Hành. Cập nhật liên tục tin tức kinh doanh, công nghệ, văn hóa và hoạt động phong trào của các thành viên.
+              Trang tin nội bộ chính thức của Tập đoàn Arito. Cập nhật liên tục tin tức kinh doanh, công nghệ, văn hóa và hoạt động phong trào của các thành viên.
             </p>
           </div>
 
@@ -43,20 +43,20 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Thông tin tòa soạn</h3>
             <p className="text-sm text-muted mb-2">
-              <strong>Địa chỉ:</strong> Tòa nhà Đồng Hành, Cầu Giấy, Hà Nội
+              <strong>Địa chỉ:</strong> Tòa nhà Arito, Cầu Giấy, Hà Nội
             </p>
             <p className="text-sm text-muted mb-2">
               <strong>Điện thoại:</strong> 024 7300 7300
             </p>
             <p className="text-sm text-muted">
-              <strong>Email:</strong> lienhe@donghanh.vn
+              <strong>Email:</strong> lienhe@arito.vn
             </p>
           </div>
         </div>
 
         {/* Bottom copyright */}
         <div className="border-t border-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-muted">
-          <p>© {new Date().getFullYear()} DongHanh.vn. Xây dựng bởi Antigravity với Next.js và Tailwind CSS.</p>
+          <p>© {new Date().getFullYear()} Arito.vn. </p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             <a href="#" className="hover:underline">Điều khoản sử dụng</a>
             <a href="#" className="hover:underline">Chính sách bảo mật</a>

@@ -36,10 +36,10 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2 group">
               <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-extrabold text-lg shadow-md group-hover:scale-105 transition-all duration-300">
-                ĐH
+                AR
               </span>
               <span className="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                DongHanh<span className="text-foreground">.vn</span>
+                Arito<span className="text-foreground">.vn</span>
               </span>
             </Link>
           </div>

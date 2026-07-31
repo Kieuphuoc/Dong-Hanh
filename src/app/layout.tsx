@@ -12,9 +12,9 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: 'DongHanh.vn - Trang tin tức nội bộ doanh nghiệp hiện đại',
+  title: 'Arito.vn - Trang tin tức nội bộ doanh nghiệp hiện đại',
   description: 'Nền tảng tin tức nội bộ hiện đại của doanh nghiệp, cập nhật nhanh chóng các thông tin công nghệ, văn hóa doanh nghiệp và tin tức kinh doanh mới nhất.',
-  keywords: ['donghanh', 'tin tuc noi bo', 'van hoa doanh nghiep', 'multimedia', 'tin cong nghe'],
+  keywords: ['arito', 'tin tuc noi bo', 'van hoa doanh nghiep', 'multimedia', 'tin cong nghe'],
   authors: [{ name: 'Antigravity' }],
 };
 

@@ -48,7 +48,6 @@ export interface MediaItem {
 }
 
 // Dữ liệu Mock mặc định khi chưa kết nối Supabase
-// Dữ liệu Mock mặc định khi chưa kết nối Supabase
 const defaultCategories: Category[] = [
   { id: '1', name: 'Tin tức', slug: 'tin-tuc' },
   { id: '2', name: 'Kinh doanh', slug: 'kinh-doanh' },
@@ -60,10 +59,10 @@ const defaultCategories: Category[] = [
 const defaultPosts: Post[] = [
   {
     id: 'post-1',
-    title: 'Đồng Hành Cloud ra mắt giải pháp AI tiên tiến cho doanh nghiệp',
-    slug: 'dong-hanh-cloud-ra-mat-giai-phap-ai-doanh-nghiep',
+    title: 'Arito Cloud ra mắt giải pháp AI tiên tiến cho doanh nghiệp',
+    slug: 'arito-cloud-ra-mat-giai-phap-ai-doanh-nghiep',
     summary: 'Giải pháp mới giúp tối ưu hóa hiệu suất làm việc lên tới 40% và giảm chi phí vận hành cho các doanh nghiệp vừa và nhỏ.',
-    content: '<p>Đồng Hành Cloud vừa chính thức công bố giải pháp trí tuệ nhân tạo mới dành riêng cho phân khúc doanh nghiệp. Với sự kết hợp giữa mô hình ngôn ngữ lớn (LLM) và các tính năng nghiệp vụ chuyên biệt, công cụ này hứa hẹn sẽ cách mạng hóa quy trình làm việc hành chính.</p><p>Đại diện Đồng Hành Cloud chia sẻ: "Chúng tôi hướng tới việc đưa AI trở thành trợ lý đắc lực của từng nhân viên. Hệ thống này không chỉ tự động hóa các tác vụ lặp đi lặp lại mà còn phân tích dữ liệu để đưa ra các đề xuất kinh doanh chính xác."</p>',
+    content: '<p>Arito Cloud vừa chính thức công bố giải pháp trí tuệ nhân tạo mới dành riêng cho phân khúc doanh nghiệp. Với sự kết hợp giữa mô hình ngôn ngữ lớn (LLM) và các tính năng nghiệp vụ chuyên biệt, công cụ này hứa hẹn sẽ cách mạng hóa quy trình làm việc hành chính.</p><p>Đại diện Arito Cloud chia sẻ: "Chúng tôi hướng tới việc đưa AI trở thành trợ lý đắc lực của từng nhân viên. Hệ thống này không chỉ tự động hóa các tác vụ lặp đi lặp lại mà còn phân tích dữ liệu để đưa ra các đề xuất kinh doanh chính xác."</p>',
     cover_image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60',
     category_id: '3',
     is_featured: true,
@@ -88,10 +87,10 @@ const defaultPosts: Post[] = [
   },
   {
     id: 'post-3',
-    title: 'Đồng Hành Podcast: Bí quyết giữ lửa nhiệt huyết của nhân viên',
+    title: 'Arito Podcast: Bí quyết giữ lửa nhiệt huyết của nhân viên',
     slug: 'bi-quyet-giu-lua-nhiet-huyet-nhan-vien',
-    summary: 'Lắng nghe những chia sẻ đầy cảm hứng từ các quản lý trẻ xuất sắc lọt top Đồng Hành 13 Under 35 về hành trình vượt qua áp lực công việc.',
-    content: '<p>Trong tập podcast tuần này, chúng ta sẽ được gặp gỡ các gương mặt tiêu biểu của Đồng Hành 13 Under 35. Họ là những người trẻ, đầy hoài bão và đang dẫn dắt các dự án quan trọng tại nhiều bộ phận thành viên.</p><p>Làm thế nào để duy trì năng lượng tích cực và đổi mới sáng tạo không ngừng? Hãy cùng lắng nghe buổi trò chuyện thú vị này.</p>',
+    summary: 'Lắng nghe những chia sẻ đầy cảm hứng từ các quản lý trẻ xuất sắc lọt top Arito 13 Under 35 về hành trình vượt qua áp lực công việc.',
+    content: '<p>Trong tập podcast tuần này, chúng ta sẽ được gặp gỡ các gương mặt tiêu biểu của Arito 13 Under 35. Họ là những người trẻ, đầy hoài bão và đang dẫn dắt các dự án quan trọng tại nhiều bộ phận thành viên.</p><p>Làm thế nào để duy trì năng lượng tích cực và đổi mới sáng tạo không ngừng? Hãy cùng lắng nghe buổi trò chuyện thú vị này.</p>',
     cover_image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop&q=60',
     category_id: '4',
     is_featured: false,
@@ -102,10 +101,10 @@ const defaultPosts: Post[] = [
   },
   {
     id: 'post-4',
-    title: 'Giải bóng đá Đồng Hành Cup chính thức khởi tranh vòng loại khu vực',
-    slug: 'giai-bong-da-dong-hanh-cup-chinh-thuc-khoi-tranh-vong-loai',
+    title: 'Giải bóng đá Arito Cup chính thức khởi tranh vòng loại khu vực',
+    slug: 'giai-bong-da-arito-cup-chinh-thuc-khoi-tranh-vong-loai',
     summary: 'Hơn 20 đội bóng đến từ các bộ phận thành viên tham dự tranh tài tại giải đấu thể thao lớn nhất trong năm.',
-    content: '<p>Đồng Hành Cup là giải đấu thường niên thu hút đông đảo cán bộ nhân viên tham gia cổ vũ. Giải đấu năm nay hứa hẹn sẽ mang đến những trận cầu hấp dẫn, kịch tính ngay từ vòng bảng.</p><p>Ban tổ chức cho biết chất lượng các đội bóng năm nay rất đồng đều và có sự chuẩn bị kỹ lưỡng về cả mặt thể lực lẫn chiến thuật.</p>',
+    content: '<p>Arito Cup là giải đấu thường niên thu hút đông đảo cán bộ nhân viên tham gia cổ vũ. Giải đấu năm nay hứa hẹn sẽ mang đến những trận cầu hấp dẫn, kịch tính ngay từ vòng bảng.</p><p>Ban tổ chức cho biết chất lượng các đội bóng năm nay rất đồng đều và có sự chuẩn bị kỹ lưỡng về cả mặt thể lực lẫn chiến thuật.</p>',
     cover_image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=60',
     category_id: '5',
     is_featured: false,
@@ -119,7 +118,7 @@ const defaultPosts: Post[] = [
 const defaultMedia: MediaItem[] = [
   {
     id: 'media-1',
-    title: 'Đồng Hành Podcast Tập 12: Đổi mới sáng tạo bắt đầu từ đâu?',
+    title: 'Arito Podcast Tập 12: Đổi mới sáng tạo bắt đầu từ đâu?',
     type: 'podcast',
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     duration: '12:45',
@@ -139,7 +138,7 @@ const defaultMedia: MediaItem[] = [
   },
   {
     id: 'media-3',
-    title: 'Đồng Hành Podcast Tập 13: Xu hướng công nghệ AI năm 2026',
+    title: 'Arito Podcast Tập 13: Xu hướng công nghệ AI năm 2026',
     type: 'podcast',
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     duration: '18:20',

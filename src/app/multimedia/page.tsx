@@ -61,7 +61,7 @@ export default function MultimediaPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-foreground flex items-center gap-2">
-              <Radio className="text-accent animate-pulse" /> Đồng Hành Multimedia
+              <Radio className="text-accent animate-pulse" /> Arito Multimedia
             </h1>
             <p className="text-sm text-muted mt-1">Nơi tổng hợp các nội dung số: Podcast, Video và các chuyên đề Longform sắc nét.</p>
           </div>
