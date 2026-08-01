@@ -64,6 +64,7 @@ export default function Home({ searchParams }: PageProps) {
 
   // State quản lý slide hiện tại của Carousel
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hoveredScanIdx, setHoveredScanIdx] = useState<number | null>(0); // Quản lý dòng mở rộng ở Bảng quét tin nhanh (mặc định dòng đầu)
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -293,7 +294,7 @@ export default function Home({ searchParams }: PageProps) {
             </div>
           </div>
 
-          {/* Quick Scan List (Bảng quét tin nhanh) */}
+          {/* Quick Scan List (Bảng quét tin nhanh) - Accordion Layout */}
           <div className="bg-card-bg border border-border rounded-3xl overflow-hidden shadow-sm">
             <div className="p-5 border-b border-border bg-muted-bg/30 flex items-center justify-between">
               <h3 className="font-extrabold text-foreground text-sm sm:text-md uppercase tracking-wider border-l-4 border-primary pl-3">
@@ -301,48 +302,70 @@ export default function Home({ searchParams }: PageProps) {
               </h3>
               <span className="text-xs text-muted font-semibold">Tổng số: {finalRemainingPosts.length} tin bài</span>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-sm">
-                <thead>
-                  <tr className="border-b border-border bg-muted-bg/10 text-muted font-bold text-xs uppercase tracking-wider">
-                    <th className="p-4 w-28 sm:w-36">Thời gian</th>
-                    <th className="p-4 w-28 sm:w-32">Chuyên mục</th>
-                    <th className="p-4">Tiêu đề bài viết</th>
-                    <th className="p-4 w-20 sm:w-24 text-right">Lượt đọc</th>
-                    <th className="p-4 w-20 sm:w-24 text-right">Thích</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border text-foreground">
-                  {finalRemainingPosts.map((post) => (
-                    <tr key={post.id} className="hover:bg-muted-bg/15 transition-colors group">
-                      <td className="p-4 text-xs font-mono text-muted">
-                        {formatDate(post.created_at)}
-                      </td>
-                      <td className="p-4">
-                        <span className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full inline-block">
+            
+            <div className="divide-y divide-border text-foreground">
+              {finalRemainingPosts.map((post, idx) => {
+                const isExpanded = idx === hoveredScanIdx;
+                return (
+                  <div 
+                    key={post.id}
+                    onMouseEnter={() => setHoveredScanIdx(idx)}
+                    className="hover:bg-muted-bg/5 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Collapsed Header Bar */}
+                    <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 cursor-pointer">
+                      <div className="flex items-center gap-3 flex-shrink-0">
+                        <span className="text-xs font-mono text-muted">{formatDate(post.created_at)}</span>
+                        <span className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
                           {getCategoryName(post.category_id)}
                         </span>
-                      </td>
-                      <td className="p-4">
-                        <Link href={`/posts/${post.slug}`} className="font-bold text-foreground group-hover:text-primary transition-colors block line-clamp-1 leading-snug">
+                      </div>
+                      <div className="flex-grow min-w-0">
+                        <h4 className="font-bold text-foreground group-hover:text-primary transition-colors duration-300 text-sm sm:text-base line-clamp-1">
                           {post.title}
                           {post.is_longform && (
                             <span className="ml-2 bg-accent/10 text-accent text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase inline-block">
                               Longform
                             </span>
                           )}
+                        </h4>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs text-muted font-mono flex-shrink-0">
+                        <span>{post.views} xem</span>
+                        <span>{post.likes} thích</span>
+                      </div>
+                    </div>
+
+                    {/* Expandable Content Panel */}
+                    <div
+                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                        isExpanded ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <div className="px-4 pb-4 flex flex-col md:flex-row gap-4 items-start border-t border-border/40 pt-3">
+                        <Link href={`/posts/${post.slug}`} className="relative block w-24 h-16 sm:w-32 sm:h-20 overflow-hidden rounded-lg bg-black flex-shrink-0 shadow-xs border border-border/30">
+                          <img
+                            src={post.cover_image}
+                            alt=""
+                            className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500"
+                          />
                         </Link>
-                      </td>
-                      <td className="p-4 text-right font-mono text-xs text-muted">
-                        {post.views}
-                      </td>
-                      <td className="p-4 text-right font-mono text-xs text-muted">
-                        {post.likes}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        <div className="flex-grow min-w-0 space-y-2">
+                          <p className="text-xs sm:text-sm text-muted leading-relaxed line-clamp-2">
+                            {post.summary}
+                          </p>
+                          <Link 
+                            href={`/posts/${post.slug}`}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-primary-hover"
+                          >
+                            Đọc bài viết <ChevronRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
               {finalRemainingPosts.length === 0 && (
                 <div className="p-8 text-center text-muted text-sm border-t border-border">
                   Không có tin bài nào khác.

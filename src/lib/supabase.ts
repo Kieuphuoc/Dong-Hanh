@@ -47,7 +47,107 @@ export interface MediaItem {
   created_at: string;
 }
 
+export interface KudosMember {
+  id: string;
+  name: string;
+  avatar: string;
+  role: string;
+  user_points: number;
+  points_to_give: number;
+  created_at?: string;
+}
+
+export interface KudosRecord {
+  id: string;
+  sender_name: string;
+  sender_avatar: string;
+  receiver_name: string;
+  receiver_avatar: string;
+  badge_id: string;
+  badge_label: string;
+  badge_icon: string;
+  badge_color: string;
+  badge_text_color: string;
+  message: string;
+  points: number;
+  likes: number;
+  has_liked: boolean;
+  created_at: string;
+}
+
+export interface KudosRedemption {
+  id: string;
+  member_name: string;
+  reward_id: string;
+  reward_title: string;
+  points_cost: number;
+  voucher_code: string;
+  created_at: string;
+}
+
 // Dữ liệu Mock mặc định khi chưa kết nối Supabase
+const defaultKudosMembers: KudosMember[] = [
+  { id: 'm-1', name: 'Nguyễn Văn Nam', avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80', role: 'Ban Công nghệ', user_points: 450, points_to_give: 150 },
+  { id: 'm-2', name: 'Lê Minh Thảo', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80', role: 'Ban Kỹ thuật', user_points: 300, points_to_give: 150 },
+  { id: 'm-3', name: 'Trần Hoàng Long', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80', role: 'Ban Kinh doanh', user_points: 500, points_to_give: 150 },
+  { id: 'm-4', name: 'Phạm Thị Mai', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80', role: 'Phòng Nhân sự', user_points: 250, points_to_give: 150 },
+  { id: 'm-5', name: 'Hoàng Anh Tuấn', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80', role: 'Ban Truyền thông', user_points: 150, points_to_give: 150 }
+];
+
+const defaultKudosRecords: KudosRecord[] = [
+  {
+    id: 'k-1',
+    sender_name: 'Phạm Thị Mai',
+    sender_avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80',
+    receiver_name: 'Nguyễn Văn Nam',
+    receiver_avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80',
+    badge_id: 'team-player',
+    badge_label: 'Đồng Đội Vàng',
+    badge_icon: '🏆',
+    badge_color: 'bg-emerald-100 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800',
+    badge_text_color: 'text-emerald-700 dark:text-emerald-400',
+    message: 'Cảm ơn anh Nam đã hỗ trợ nhóm HR tối ưu hóa hệ thống điểm danh mới trong tuần qua. Anh giải thích rất dễ hiểu và nhiệt tình làm thêm giờ để fix lỗi giúp tụi em!',
+    points: 50,
+    likes: 12,
+    has_liked: false,
+    created_at: new Date(Date.now() - 3600000 * 3).toISOString()
+  },
+  {
+    id: 'k-2',
+    sender_name: 'Nguyễn Văn Nam',
+    sender_avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80',
+    receiver_name: 'Lê Minh Thảo',
+    receiver_avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+    badge_id: 'problem-solver',
+    badge_label: 'Giải Quyết Vấn Đề',
+    badge_icon: '⚡',
+    badge_color: 'bg-purple-100 dark:bg-purple-950/40 border border-purple-300 dark:border-purple-800',
+    badge_text_color: 'text-purple-700 dark:text-purple-400',
+    message: 'Thảo có kỹ năng phân tích lỗi xuất sắc! Cảm ơn bạn đã nhanh chóng tìm ra lỗi memory leak trên môi trường staging trước giờ release. Bạn đã cứu cả team một bàn thua trông thấy!',
+    points: 100,
+    likes: 8,
+    has_liked: false,
+    created_at: new Date(Date.now() - 3600000 * 18).toISOString()
+  },
+  {
+    id: 'k-3',
+    sender_name: 'Trần Hoàng Long',
+    sender_avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    receiver_name: 'Phạm Thị Mai',
+    receiver_avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80',
+    badge_id: 'creative-mind',
+    badge_label: 'Sáng Tạo Không Giới Hạn',
+    badge_icon: '💡',
+    badge_color: 'bg-[#fae8ff] dark:bg-[#701a75]/20 border border-[#f5d0fe] dark:border-[#701a75]',
+    badge_text_color: 'text-[#a21caf] dark:text-[#f472b6]',
+    message: 'Ý tưởng tổ chức ngày hội Family Day vô cùng sáng tạo của Mai đã gắn kết mọi thành viên trong công ty. Lũ trẻ nhà mình cực kỳ thích hoạt động vẽ tranh cát!',
+    points: 50,
+    likes: 15,
+    has_liked: true,
+    created_at: new Date(Date.now() - 3600000 * 32).toISOString()
+  }
+];
+
 const defaultCategories: Category[] = [
   { id: '1', name: 'Tin tức', slug: 'tin-tuc' },
   { id: '2', name: 'Kinh doanh', slug: 'kinh-doanh' },
@@ -186,6 +286,9 @@ class LocalDb {
       if (!localStorage.getItem('ct_posts')) this.set('ct_posts', defaultPosts);
       if (!localStorage.getItem('ct_media')) this.set('ct_media', defaultMedia);
       if (!localStorage.getItem('ct_comments')) this.set('ct_comments', defaultComments);
+      if (!localStorage.getItem('kudos_members')) this.set('kudos_members', defaultKudosMembers);
+      if (!localStorage.getItem('kudos_records')) this.set('kudos_records', defaultKudosRecords);
+      if (!localStorage.getItem('kudos_redemptions')) this.set('kudos_redemptions', [] as KudosRedemption[]);
     }
   }
 
@@ -363,6 +466,142 @@ class LocalDb {
     items.unshift(newMedia);
     this.set('ct_media', items);
     return newMedia;
+  }
+
+  async getKudosMembers(): Promise<KudosMember[]> {
+    if (supabase) {
+      const { data, error } = await supabase.from('kudos_members').select('*').order('name');
+      if (!error && data) return data;
+    }
+    return this.get('kudos_members', defaultKudosMembers);
+  }
+
+  async getKudosRecords(): Promise<KudosRecord[]> {
+    if (supabase) {
+      const { data, error } = await supabase.from('kudos_records').select('*').order('created_at', { ascending: false });
+      if (!error && data) return data;
+    }
+    return this.get('kudos_records', defaultKudosRecords);
+  }
+
+  async getKudosRedemptions(memberName?: string): Promise<KudosRedemption[]> {
+    if (supabase) {
+      let query = supabase.from('kudos_redemptions').select('*').order('created_at', { ascending: false });
+      if (memberName) query = query.eq('member_name', memberName);
+      const { data, error } = await query;
+      if (!error && data) return data;
+    }
+    const redemptions = this.get('kudos_redemptions', [] as KudosRedemption[]);
+    if (memberName) {
+      return redemptions.filter(r => r.member_name === memberName);
+    }
+    return redemptions;
+  }
+
+  async createKudosRecord(record: Omit<KudosRecord, 'id' | 'likes' | 'has_liked' | 'created_at'>): Promise<KudosRecord> {
+    const newRecord: KudosRecord = {
+      ...record,
+      id: 'kudos-rec-' + Math.random().toString(36).substr(2, 9),
+      likes: 0,
+      has_liked: false,
+      created_at: new Date().toISOString()
+    };
+
+    if (supabase) {
+      const { data, error } = await supabase.from('kudos_records').insert([newRecord]).select().single();
+      if (!error && data) {
+        try {
+          await supabase.rpc('send_kudos_transaction', {
+            sender: record.sender_name,
+            receiver: record.receiver_name,
+            pts: record.points
+          });
+        } catch (e) {
+          console.error(e);
+        }
+        return data;
+      }
+    }
+
+    const records = this.get('kudos_records', defaultKudosRecords);
+    records.unshift(newRecord);
+    this.set('kudos_records', records);
+
+    const members = this.get('kudos_members', defaultKudosMembers);
+    const senderIdx = members.findIndex(m => m.name === record.sender_name);
+    const receiverIdx = members.findIndex(m => m.name === record.receiver_name);
+
+    if (senderIdx !== -1) {
+      members[senderIdx].points_to_give = Math.max(0, members[senderIdx].points_to_give - record.points);
+    }
+    if (receiverIdx !== -1) {
+      members[receiverIdx].user_points += record.points;
+    }
+    this.set('kudos_members', members);
+
+    return newRecord;
+  }
+
+  async createKudosRedemption(redemption: Omit<KudosRedemption, 'id' | 'created_at'>): Promise<KudosRedemption> {
+    const newRedemption: KudosRedemption = {
+      ...redemption,
+      id: 'kudos-red-' + Math.random().toString(36).substr(2, 9),
+      created_at: new Date().toISOString()
+    };
+
+    if (supabase) {
+      const { data, error } = await supabase.from('kudos_redemptions').insert([newRedemption]).select().single();
+      if (!error && data) {
+        try {
+          await supabase.rpc('redeem_kudos_points', {
+            username: redemption.member_name,
+            pts: redemption.points_cost
+          });
+        } catch (e) {
+          console.error(e);
+        }
+        return data;
+      }
+    }
+
+    const redemptions = this.get('kudos_redemptions', [] as KudosRedemption[]);
+    redemptions.unshift(newRedemption);
+    this.set('kudos_redemptions', redemptions);
+
+    const members = this.get('kudos_members', defaultKudosMembers);
+    const memberIdx = members.findIndex(m => m.name === redemption.member_name);
+    if (memberIdx !== -1) {
+      members[memberIdx].user_points = Math.max(0, members[memberIdx].user_points - redemption.points_cost);
+      this.set('kudos_members', members);
+    }
+
+    return newRedemption;
+  }
+
+  async toggleKudosLike(id: string): Promise<KudosRecord | null> {
+    const records = this.get('kudos_records', defaultKudosRecords);
+    const idx = records.findIndex(r => r.id === id);
+    if (idx !== -1) {
+      const hasLiked = records[idx].has_liked;
+      records[idx].likes = hasLiked ? records[idx].likes - 1 : records[idx].likes + 1;
+      records[idx].has_liked = !hasLiked;
+      this.set('kudos_records', records);
+      
+      if (supabase) {
+        try {
+          const { data, error } = await supabase.from('kudos_records')
+            .update({ likes: records[idx].likes, has_liked: records[idx].has_liked })
+            .eq('id', id)
+            .select()
+            .single();
+          if (!error && data) return data;
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      return records[idx];
+    }
+    return null;
   }
 }
 

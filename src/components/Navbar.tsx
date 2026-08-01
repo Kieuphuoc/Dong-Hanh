@@ -56,6 +56,7 @@ export default function Navbar() {
                 {cat.name}
               </Link>
             ))}
+            <Link href="/kudos" className="hover:text-primary transition-colors font-bold text-[#a21caf] dark:text-[#f472b6]">Kudos</Link>
             <Link href="/multimedia" className="flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-bold">
               <Play size={14} className="fill-accent" /> Multimedia
             </Link>
@@ -127,6 +128,14 @@ export default function Navbar() {
                 {cat.name}
               </Link>
             ))}
+
+            <Link
+              href="/kudos"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-bold text-[#a21caf] dark:text-[#f472b6] hover:bg-muted-bg transition-colors"
+            >
+              Kudos & Gamification
+            </Link>
 
             <Link
               href="/multimedia"
