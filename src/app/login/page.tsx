@@ -134,22 +134,34 @@ export default function LoginPage() {
       </section>
 
       <aside className="order-1 flex w-full flex-col bg-[#fafaf8] p-5 sm:p-8 lg:order-2 lg:h-dvh lg:w-[380px] xl:w-[420px] 2xl:w-[500px] lg:shrink-0 justify-between overflow-y-auto">
-        <div className="relative z-10 flex justify-end shrink-0">
-          <div className="inline-flex items-center rounded-full bg-neutral-200/80 p-1 text-[12.5px] 2xl:text-sm font-medium text-neutral-600">
+        <div className="relative z-20 flex justify-end shrink-0 pointer-events-auto">
+          <div className="inline-flex items-center rounded-full bg-neutral-200/90 p-1 text-[12.5px] 2xl:text-sm font-medium text-neutral-600 shadow-inner">
             <button
               type="button"
-              onClick={() => setLang('vi')}
-              className={`cursor-pointer rounded-full px-3 py-1 transition-all duration-200 ${
-                vi ? 'bg-white text-emerald-900 shadow-sm font-semibold' : 'text-neutral-500 hover:text-neutral-900'
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setLang('vi');
+              }}
+              className={`cursor-pointer select-none rounded-full px-3.5 py-1.5 transition-all duration-200 ${
+                lang === 'vi'
+                  ? 'bg-white text-emerald-900 shadow-sm font-bold'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-white/50'
               }`}
             >
               Tiếng Việt
             </button>
             <button
               type="button"
-              onClick={() => setLang('en')}
-              className={`cursor-pointer rounded-full px-3 py-1 transition-all duration-200 ${
-                !vi ? 'bg-white text-emerald-900 shadow-sm font-semibold' : 'text-neutral-500 hover:text-neutral-900'
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setLang('en');
+              }}
+              className={`cursor-pointer select-none rounded-full px-3.5 py-1.5 transition-all duration-200 ${
+                lang === 'en'
+                  ? 'bg-white text-emerald-900 shadow-sm font-bold'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-white/50'
               }`}
             >
               English
