@@ -31,6 +31,135 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes brand-slide-a {
+  0%,
+  42% {
+    opacity: 1;
+    visibility: visible;
+  }
+  50%,
+  92% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes brand-slide-b {
+  0%,
+  42% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  50%,
+  92% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes brand-dot-a {
+  0%,
+  42% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  50%,
+  92% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes brand-dot-b {
+  0%,
+  42% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50%,
+  92% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
+.brand-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.brand-slide-a {
+  animation: brand-slide-a 8s ease-in-out infinite;
+}
+
+.brand-slide-b {
+  animation: brand-slide-b 8s ease-in-out infinite;
+}
+
+.brand-dots {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 20;
+  display: flex;
+  gap: 0.4rem;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .brand-dots {
+    right: 2.5rem;
+    bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brand-dots {
+    right: 3.5rem;
+    bottom: 3.5rem;
+  }
+}
+
+.brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.brand-dot-a {
+  animation: brand-dot-a 8s ease-in-out infinite;
+}
+
+.brand-dot-b {
+  animation: brand-dot-b 8s ease-in-out infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

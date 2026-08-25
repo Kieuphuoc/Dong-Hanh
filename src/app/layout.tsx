@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { Quicksand } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Suspense } from 'react';
 
 const quicksand = Quicksand({
   variable: '--font-quicksand',
@@ -30,13 +27,7 @@ export default function RootLayout({
       style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <Suspense fallback={<div className="h-16 bg-card-bg border-b border-border" />}>
-          <Navbar />
-        </Suspense>
-        <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Search, Menu, X, PlusCircle, Play } from 'lucide-react';
+import { Search, Menu, X, PlusCircle, Play, LogIn } from 'lucide-react';
 import { db, Category } from '@/lib/supabase';
 
 export default function Navbar() {
@@ -78,6 +78,12 @@ export default function Navbar() {
 
             {/* Write article / Admin Link */}
             <Link
+              href="/login"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full border border-border text-sm font-medium hover:bg-muted-bg transition-all duration-300"
+            >
+              <LogIn size={16} /> Đăng nhập
+            </Link>
+            <Link
               href="/admin"
               className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary hover:bg-primary-hover text-white text-sm font-medium shadow-sm transition-all duration-300 active:scale-95"
             >
@@ -145,6 +151,13 @@ export default function Navbar() {
               Multimedia
             </Link>
 
+            <Link
+              href="/login"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-muted-bg hover:text-primary transition-colors text-foreground"
+            >
+              Đăng nhập
+            </Link>
             <Link
               href="/admin"
               onClick={() => setIsMenuOpen(false)}
