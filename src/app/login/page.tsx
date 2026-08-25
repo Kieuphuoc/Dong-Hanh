@@ -87,42 +87,42 @@ export default function LoginPage() {
             />
           </div>
 
-          <div className="mx-auto grid w-full max-w-4xl 2xl:max-w-6xl gap-2.5 sm:gap-3 xl:gap-4 2xl:gap-6 lg:grid-cols-2 shrink-0">
+          <div className="mx-auto grid w-full max-w-4xl 2xl:max-w-6xl gap-3 sm:gap-3.5 xl:gap-4 2xl:gap-6 lg:grid-cols-2 shrink-0">
             {partners.map((p) => (
               <article
                 key={p.id}
-                className="flex flex-col justify-between rounded-xl sm:rounded-2xl border border-white/15 bg-white/10 p-3 sm:p-3.5 xl:p-4 2xl:p-6 backdrop-blur-md"
+                className="flex flex-col justify-between rounded-xl sm:rounded-2xl border border-white/15 bg-white/10 p-3.5 sm:p-4 xl:p-5 2xl:p-6 backdrop-blur-md"
               >
                 <div>
-                  <div className="mb-1.5 sm:mb-2 inline-flex rounded-md bg-white px-2.5 py-1 xl:px-3 xl:py-1.5">
-                    <img src={p.logo} alt={p.name} className="h-4.5 sm:h-5 2xl:h-7 w-auto max-w-[100px] sm:max-w-[110px] 2xl:max-w-[150px] object-contain" />
+                  <div className="mb-2 sm:mb-2.5 inline-flex rounded-md bg-white px-2.5 py-1 xl:px-3 xl:py-1.5">
+                    <img src={p.logo} alt={p.name} className="h-5 sm:h-6 2xl:h-7 w-auto max-w-[105px] sm:max-w-[120px] 2xl:max-w-[150px] object-contain" />
                   </div>
-                  <p className="text-[12.5px] sm:text-[13px] 2xl:text-base font-semibold text-white">{p.name}</p>
-                  <p className="mt-0.5 text-[11px] sm:text-[11.5px] 2xl:text-sm leading-tight text-emerald-100/85">{p.quote}</p>
-                  <div className="mt-1 sm:mt-1.5 space-y-0.5 sm:space-y-1 text-[10px] sm:text-[10.5px] xl:text-[11px] 2xl:text-[12.5px] leading-tight text-white/70">
+                  <p className="text-[13.5px] sm:text-[14px] 2xl:text-base font-semibold text-white">{p.name}</p>
+                  <p className="mt-0.5 text-[12px] sm:text-[12.5px] 2xl:text-sm leading-tight text-emerald-100/90">{p.quote}</p>
+                  <div className="mt-1.5 sm:mt-2 space-y-1 text-[11px] sm:text-[11.5px] xl:text-[12px] 2xl:text-[13px] leading-snug text-white/80">
                     {p.body.map((line) => (
                       <p key={line.slice(0, 24)}>{line}</p>
                     ))}
                   </div>
                 </div>
-                <div className="mt-2 sm:mt-2.5 flex items-center justify-between gap-x-1.5 text-[10px] sm:text-[10.5px] xl:text-[11px] 2xl:text-[13px] text-white/75 whitespace-nowrap">
+                <div className="mt-2.5 sm:mt-3 flex items-center justify-between gap-x-1.5 text-[11px] sm:text-[11.5px] xl:text-[12px] 2xl:text-[13px] text-white/85 whitespace-nowrap">
                   <a href={p.phoneHref} className="group inline-flex items-center gap-1 hover:text-white transition-colors">
-                    <span className="flex h-4.5 w-4.5 sm:h-5 sm:w-5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30 group-hover:bg-emerald-500/35 group-hover:text-emerald-300 transition-all">
-                      <Phone className="h-2.5 w-2.5 sm:h-3 sm:w-3 2xl:h-4 2xl:w-4 shrink-0" />
+                    <span className="flex h-5 w-5 sm:h-5.5 sm:w-5.5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30 group-hover:bg-emerald-500/35 group-hover:text-emerald-300 transition-all">
+                      <Phone className="h-3 w-3 2xl:h-4 2xl:w-4 shrink-0" />
                     </span>
                     <span>{p.phone}</span>
                   </a>
                   <span className="text-white/20">·</span>
                   <a href={`mailto:${p.email}`} className="group inline-flex items-center gap-1 hover:text-white transition-colors">
-                    <span className="flex h-4.5 w-4.5 sm:h-5 sm:w-5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-sky-500/20 text-sky-400 ring-1 ring-sky-500/30 group-hover:bg-sky-500/35 group-hover:text-sky-300 transition-all">
-                      <Mail className="h-2.5 w-2.5 sm:h-3 sm:w-3 2xl:h-4 2xl:w-4 shrink-0" />
+                    <span className="flex h-5 w-5 sm:h-5.5 sm:w-5.5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-sky-500/20 text-sky-400 ring-1 ring-sky-500/30 group-hover:bg-sky-500/35 group-hover:text-sky-300 transition-all">
+                      <Mail className="h-3 w-3 2xl:h-4 2xl:w-4 shrink-0" />
                     </span>
                     <span>{p.email}</span>
                   </a>
                   <span className="text-white/20">·</span>
                   <a href={p.websiteHref} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1 hover:text-white transition-colors">
-                    <span className="flex h-4.5 w-4.5 sm:h-5 sm:w-5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-amber-500/20 text-amber-400 ring-1 ring-amber-500/30 group-hover:bg-amber-500/35 group-hover:text-amber-300 transition-all">
-                      <Globe className="h-2.5 w-2.5 sm:h-3 sm:w-3 2xl:h-4 2xl:w-4 shrink-0" />
+                    <span className="flex h-5 w-5 sm:h-5.5 sm:w-5.5 2xl:h-7 2xl:w-7 items-center justify-center rounded-md bg-amber-500/20 text-amber-400 ring-1 ring-amber-500/30 group-hover:bg-amber-500/35 group-hover:text-amber-300 transition-all">
+                      <Globe className="h-3 w-3 2xl:h-4 2xl:w-4 shrink-0" />
                     </span>
                     <span>{p.website}</span>
                   </a>
