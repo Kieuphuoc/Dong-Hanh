@@ -22,10 +22,16 @@ const partners = [
     id: 'tentamus',
     name: 'Tentamus Việt Nam',
     quote: 'Đối tác giải pháp Tư vấn, Dịch vụ kiểm nghiệm - giám định',
+    quoteEn: 'Consulting and Testing/Inspection Solutions Partner',
     body: [
       'Tentamus Việt Nam là thành viên của Tentamus Group – tập đoàn kiểm nghiệm toàn cầu với hơn 90 phòng thí nghiệm trên khắp thế giới.',
       'Đơn vị được cấp phép kiểm tra, đánh giá thực phẩm, dược phẩm, mỹ phẩm, nông nghiệp và dinh dưỡng.',
       'Tại Việt Nam, Tentamus có 2 phòng kiểm nghiệm tại TP.HCM và Cần Thơ, cung cấp dịch vụ kiểm nghiệm và tư vấn chất lượng theo tiêu chuẩn quốc tế.',
+    ],
+    bodyEn: [
+      'Tentamus Vietnam is a member of the Tentamus Group, a global testing conglomerate operating more than 90 laboratories worldwide.',
+      'The organization is licensed to conduct testing and assessment services for food, pharmaceuticals, cosmetics, agriculture, and nutrition products.',
+      'In Vietnam, Tentamus operates two testing laboratories, located in Ho Chi Minh City and Can Tho, providing testing and quality consulting services in accordance with international standards.',
     ],
     logo: '/brands/tentamus.svg',
     phone: '+84 918 491 918',
@@ -38,9 +44,14 @@ const partners = [
     id: 'arito',
     name: 'Arito Solutions',
     quote: 'Đối tác giải pháp Nền tảng công nghệ',
+    quoteEn: 'Technology Platform Solutions Partner',
     body: [
       'Arito Solutions là đơn vị tư vấn - triển khai giải pháp quản trị doanh nghiệp toàn diện, bao gồm Bán hàng, Mua hàng, Kho, Tài chính - Kế toán và Quản lý Sản xuất.',
       'Đặc biệt, Arito còn phát triển các giải pháp chuyên biệt cho ngành Sản xuất thực phẩm - gia vị như Cổng thông tin Khách hàng/Nhà cung cấp, hệ thống MRL và các dịch vụ ứng dụng AI.',
+    ],
+    bodyEn: [
+      'Arito Solutions is a consulting and implementation provider specializing in comprehensive enterprise management solutions, encompassing Sales, Procurement, Warehouse Management, Finance - Accounting, and Production Management.',
+      'In particular, Arito develops specialized solutions tailored for the Food and Spice Manufacturing industry, including Customer/Supplier Portals, Maximum Residue Limit (MRL) monitoring systems, and AI-powered application services.',
     ],
     logo: '/brands/Arito-brandname.png',
     phone: '+84 362 089 487',
@@ -98,9 +109,11 @@ export default function LoginPage() {
                     <img src={p.logo} alt={p.name} className="h-5 sm:h-6 2xl:h-7 w-auto max-w-[105px] sm:max-w-[120px] 2xl:max-w-[150px] object-contain" />
                   </div>
                   <p className="text-[13.5px] sm:text-[14px] 2xl:text-base font-semibold text-white">{p.name}</p>
-                  <p className="mt-0.5 text-[12px] sm:text-[12.5px] 2xl:text-sm leading-tight text-emerald-100/90">{p.quote}</p>
+                  <p className="mt-0.5 text-[12px] sm:text-[12.5px] 2xl:text-sm leading-tight text-emerald-100/90">
+                    {lang === 'en' ? p.quoteEn : p.quote}
+                  </p>
                   <div className="mt-1.5 sm:mt-2 space-y-1 text-[11px] sm:text-[11.5px] xl:text-[12px] 2xl:text-[13px] leading-snug text-white/80">
-                    {p.body.map((line) => (
+                    {(lang === 'en' ? p.bodyEn : p.body).map((line) => (
                       <p key={line.slice(0, 24)}>{line}</p>
                     ))}
                   </div>
