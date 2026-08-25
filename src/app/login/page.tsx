@@ -83,7 +83,7 @@ export default function LoginPage() {
             <img
               src="/brands/vpsa-white.png"
               alt="VPSA — Hiệp hội Hồ tiêu và cây gia vị Việt Nam"
-              className="h-auto max-h-[110px] sm:max-h-[140px] lg:max-h-[150px] xl:max-h-[180px] 2xl:max-h-[250px] w-auto object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+              className="h-auto max-h-[160px] sm:max-h-[200px] lg:max-h-[220px] xl:max-h-[260px] 2xl:max-h-[320px] w-auto object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
             />
           </div>
 
