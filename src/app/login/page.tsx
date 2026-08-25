@@ -145,7 +145,7 @@ export default function LoginPage() {
               }}
               className={`cursor-pointer select-none rounded-full px-3.5 py-1.5 transition-all duration-200 ${
                 lang === 'vi'
-                  ? 'bg-white text-emerald-900 shadow-sm font-bold'
+                  ? 'bg-[#3e9247] text-white shadow-sm font-bold'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-white/50'
               }`}
             >
@@ -160,7 +160,7 @@ export default function LoginPage() {
               }}
               className={`cursor-pointer select-none rounded-full px-3.5 py-1.5 transition-all duration-200 ${
                 lang === 'en'
-                  ? 'bg-white text-emerald-900 shadow-sm font-bold'
+                  ? 'bg-[#3e9247] text-white shadow-sm font-bold'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-white/50'
               }`}
             >
@@ -170,7 +170,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mx-auto flex w-full max-w-[320px] sm:max-w-[340px] 2xl:max-w-[380px] flex-1 flex-col justify-center py-2 sm:py-4">
-          <p className="text-[11px] 2xl:text-[12px] font-semibold uppercase tracking-[0.28em] text-emerald-800">VPSA MRL</p>
+          <p className="text-[11px] 2xl:text-[12px] font-semibold uppercase tracking-[0.28em] text-[#3e9247]">VPSA MRL</p>
           <h2 className="mt-2 sm:mt-3 text-[28px] sm:text-[32px] 2xl:text-[40px] font-semibold tracking-tight text-neutral-900">
             {vi ? 'Đăng nhập' : 'Sign in'}
           </h2>
@@ -186,7 +186,7 @@ export default function LoginPage() {
                 required
                 value={account}
                 onChange={(e) => setAccount(e.target.value)}
-                className="w-full border-0 border-b border-neutral-300 bg-transparent py-2 sm:py-2.5 text-[14px] sm:text-[15px] 2xl:text-base outline-none transition focus:border-emerald-800"
+                className="w-full border-0 border-b border-neutral-300 bg-transparent py-2 sm:py-2.5 text-[14px] sm:text-[15px] 2xl:text-base outline-none transition focus:border-[#3e9247]"
               />
             </label>
 
@@ -195,7 +195,7 @@ export default function LoginPage() {
                 <label htmlFor="login-password" className="text-[12.5px] sm:text-[13px] 2xl:text-sm text-neutral-600">
                   {vi ? 'Mật khẩu' : 'Password'}
                 </label>
-                <button type="button" className="text-[11.5px] sm:text-[12px] 2xl:text-[13px] text-emerald-800 hover:underline">
+                <button type="button" className="text-[11.5px] sm:text-[12px] 2xl:text-[13px] text-[#3e9247] hover:underline">
                   {vi ? 'Quên mật khẩu' : 'Forgot password'}
                 </button>
               </div>
@@ -206,7 +206,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full border-0 border-b border-neutral-300 bg-transparent py-2 sm:py-2.5 pr-10 text-[14px] sm:text-[15px] 2xl:text-base outline-none transition focus:border-emerald-800"
+                  className="w-full border-0 border-b border-neutral-300 bg-transparent py-2 sm:py-2.5 pr-10 text-[14px] sm:text-[15px] 2xl:text-base outline-none transition focus:border-[#3e9247]"
                 />
                 <button
                   type="button"
@@ -222,7 +222,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-[#163d1c] py-3 sm:py-3.5 2xl:py-4 text-[12.5px] sm:text-[13px] 2xl:text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#0f2b14] disabled:opacity-70"
+              className="w-full bg-[#3e9247] py-3 sm:py-3.5 2xl:py-4 text-[12.5px] sm:text-[13px] 2xl:text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#347c3c] shadow-md hover:shadow-lg disabled:opacity-70 cursor-pointer"
             >
               {submitting ? (vi ? 'Đang đăng nhập...' : 'Signing in...') : vi ? 'Đăng nhập' : 'Sign in'}
             </button>
