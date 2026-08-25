@@ -67,7 +67,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex h-dvh min-h-dvh w-full overflow-hidden flex-col bg-[#0b120e] lg:flex-row">
+    <div className="flex h-dvh min-h-dvh w-full overflow-hidden flex-col bg-[#142319] lg:flex-row">
       <section className="relative order-2 flex h-full flex-1 flex-col overflow-hidden lg:order-1 lg:h-dvh">
         <div className="absolute inset-0 overflow-hidden">
           <img
@@ -75,7 +75,7 @@ export default function LoginPage() {
             alt=""
             className="login-hero-img absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,16,12,0.35)_0%,rgba(8,16,12,0.55)_45%,rgba(8,16,12,0.88)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,35,22,0.15)_0%,rgba(15,35,22,0.35)_45%,rgba(15,35,22,0.65)_100%)]" />
         </div>
 
         <div className="relative z-10 flex h-full flex-1 flex-col justify-between p-4 sm:p-6 lg:p-6 xl:p-8 2xl:p-12">
@@ -91,7 +91,7 @@ export default function LoginPage() {
             {partners.map((p) => (
               <article
                 key={p.id}
-                className="flex flex-col justify-between rounded-xl sm:rounded-2xl border border-white/15 bg-white/10 p-3.5 sm:p-4 xl:p-5 2xl:p-6 backdrop-blur-md"
+                className="flex flex-col justify-between rounded-xl sm:rounded-2xl border border-white/25 bg-black/35 p-3.5 sm:p-4 xl:p-5 2xl:p-6 backdrop-blur-lg shadow-xl"
               >
                 <div>
                   <div className="mb-2 sm:mb-2.5 inline-flex rounded-md bg-white px-2.5 py-1 xl:px-3 xl:py-1.5">
