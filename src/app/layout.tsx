@@ -23,10 +23,11 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
+      suppressHydrationWarning
       className={`${quicksand.variable} h-full antialiased`}
       style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
         {children}
       </body>
     </html>
